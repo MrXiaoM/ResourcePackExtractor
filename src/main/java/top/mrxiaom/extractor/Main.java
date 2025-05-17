@@ -1,18 +1,30 @@
 package top.mrxiaom.extractor;
 
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.core.ConsoleAppender;
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FileUtils;
+import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
-    private static Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    static {
+        LogbackConfiguration configuration = new LogbackConfiguration();
+        LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
+        configuration.setContext(context);
+        context.reset();
+        configuration.configure(context);
+    }
+    private static Logger LOGGER = LoggerFactory.getLogger("Main");
+
     public static void main(String[] args) {
         Options options = new Options();
         options.addOption("i", "input", true, "输入文件路径");
@@ -54,6 +66,7 @@ public class Main {
                     LOGGER.warn("导出文件 {} 时出现异常", path, e);
                 }
             });
+            LOGGER.info("导出完成! 已导出到 {}", outputDir.getAbsoluteFile());
         } catch (ParseException e) {
             LOGGER.error("参数错误: {}", e.getMessage());
             formatter.printHelp("greet", options);

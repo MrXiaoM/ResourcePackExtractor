@@ -3,7 +3,7 @@ plugins {
     id("com.gradleup.shadow") version "8.3.0"
 }
 
-val targetJavaVersion = 8
+val targetJavaVersion = 17
 group = "top.mrxiaom.extractor"
 version = "1.0.0"
 
@@ -31,6 +31,11 @@ tasks {
     }
     shadowJar {
         destinationDirectory.set(project.projectDir.resolve("out"))
+        manifest {
+            attributes(mapOf(
+                "Main-Class" to "top.mrxiaom.extractor.Main"
+            ))
+        }
     }
     withType<JavaCompile>().configureEach {
         options.encoding = "UTF-8"
