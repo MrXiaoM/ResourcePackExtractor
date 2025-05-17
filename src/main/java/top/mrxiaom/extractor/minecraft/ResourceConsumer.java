@@ -1,4 +1,4 @@
-package top.mrxiaom.extractor;
+package top.mrxiaom.extractor.minecraft;
 
 import java.io.InputStream;
 import java.util.zip.ZipFile;

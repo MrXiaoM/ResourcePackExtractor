@@ -1,9 +1,7 @@
-package top.mrxiaom.extractor;
+package top.mrxiaom.extractor.minecraft;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 

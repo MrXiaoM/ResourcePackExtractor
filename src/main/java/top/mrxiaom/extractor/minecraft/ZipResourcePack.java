@@ -1,4 +1,4 @@
-package top.mrxiaom.extractor;
+package top.mrxiaom.extractor.minecraft;
 
 import org.apache.commons.io.IOUtils;
 import org.jetbrains.annotations.Nullable;
@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
-import java.util.logging.Level;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
