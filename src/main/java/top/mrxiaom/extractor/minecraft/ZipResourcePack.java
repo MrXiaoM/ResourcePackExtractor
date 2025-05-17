@@ -35,7 +35,7 @@ public class ZipResourcePack {
         }
     }
 
-    static ZipResourcePack read(File file) {
+    public static ZipResourcePack read(File file) {
         ZipFileWrapper zipFile = new ZipFileWrapper(file);
         return new ZipResourcePack(zipFile);
     }
