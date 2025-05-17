@@ -36,7 +36,7 @@ public class Main {
         try {
             CommandLine cmd = parser.parse(options, args);
             if (!cmd.hasOption("i")) {
-                formatter.printHelp("greet", options);
+                formatter.printHelp("extractor <参数>", options);
                 return;
             }
             String optOutput = cmd.hasOption("o") ? cmd.getOptionValue("o") : "output";
@@ -69,7 +69,7 @@ public class Main {
             LOGGER.info("导出完成! 已导出到 {}", outputDir.getAbsoluteFile());
         } catch (ParseException e) {
             LOGGER.error("参数错误: {}", e.getMessage());
-            formatter.printHelp("greet", options);
+            formatter.printHelp("extractor <参数>", options);
             System.exit(1);
         }
     }
